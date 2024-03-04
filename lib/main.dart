@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:journal/studentPage.dart';
 
-class Food {
+class Student {
   final String name;
-  final String urlfood;
+  final String urlStudent;
+  final String classS;
+  final String rollno;
 
-  const Food({
+  const Student({
     required this.name,
-    required this.urlfood,
+    required this.urlStudent,
+    required this.classS,
+    required this.rollno,
   });
 }
 
@@ -19,36 +24,48 @@ void main() {
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
 
-  final List<Food> food = [
-    Food(
-      name: "Pizza",
-      urlfood:
-      "https://cdn3d.iconscout.com/3d/premium/thumb/pizza-slice-4706088-4020120.png?f=webp",
+  final List<Student> student = [
+    Student(
+      name: "Prince Solanki",
+      urlStudent:
+      "images/mine.png",
+      classS: "SYBCA",
+      rollno:"885",
     ),
-    Food(
-      name: "HotDog",
-      urlfood:
-      "https://cdn3d.iconscout.com/3d/premium/thumb/hotdog-4706055-4020123.png?f=webp",
+    Student(
+      name: "Jay Rangani",
+      urlStudent:
+      "images/jay.png",
+      classS: "SYBCA",
+      rollno:"877",
     ),
-    Food(
-      name: "Taco",
-      urlfood:
-      "https://cdn3d.iconscout.com/3d/premium/thumb/taco-4706092-4020117.png?f=webp",
+    Student(
+      name: "Vansh Rathod",
+      urlStudent:
+      "images/vansh.png",
+      classS: "SYBCA",
+      rollno:"879",
     ),
-    Food(
-      name: "Donut",
-      urlfood:
-      "https://cdn3d.iconscout.com/3d/premium/thumb/donuts-4706053-4020125.png?f=png",
+    Student(
+      name: "Deval Rathod",
+      urlStudent:
+      "images/deval.png",
+      classS: "SYBCA",
+      rollno:"878",
     ),
-    Food(
-      name: "French Fries",
-      urlfood:
-      "https://cdn3d.iconscout.com/3d/premium/thumb/french-fries-4706054-4020124.png?f=png",
+    Student(
+      name: "Kush Desai",
+      urlStudent:
+      "images/kush.png",
+      classS: "SYBCA",
+      rollno:"811",
     ),
-    Food(
-      name: "Ice Cream",
-      urlfood:
-      "https://cdn3d.iconscout.com/3d/premium/thumb/ice-cream-cone-4706056-4020122.png?f=webp",
+    Student(
+      name: "Harshil Kathiyare",
+      urlStudent:
+      "images/harshil.png",
+      classS: "SYBCA",
+      rollno:"830",
     ),
   ];
 
@@ -58,9 +75,9 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text(
-            "Food App",
+            "SDJ International College",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 25,
               fontStyle: FontStyle.normal,
               color: Colors.white,
               fontFamily: 'jellee',
@@ -70,22 +87,22 @@ class MyApp extends StatelessWidget {
           centerTitle: true,
         ),
         body: ListView.builder(
-          itemCount: food.length,
+          itemCount: student.length,
           itemBuilder: (context, index) => Card(
             child: ListTile(
               leading: CircleAvatar(
                 radius: 28,
-                backgroundImage: NetworkImage(food[index].urlfood),
+                backgroundImage: AssetImage(student[index].urlStudent),
               ),
               title: Text(
-                food[index].name,
+                student[index].name,
                 style: TextStyle(fontFamily: 'jellee'),
               ),
               trailing: const Icon(Icons.arrow_forward),
-              //onTap: (){
-              //  Navigator.of(context).push(MaterialPageRoute(builder: (context) => FoodPage(food:food),
-                //));
-             // },
+              onTap: (){
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => studentPage(student: student[index]),
+                ));
+             },
             ),
           ),
         ),
